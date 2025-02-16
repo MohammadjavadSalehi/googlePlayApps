@@ -38,7 +38,7 @@ df = pd.DataFrame(data)
 # Display DataFrame
 st.dataframe(df)
 
-# 📌 Fetch & Display Finance Time Series Data
+# Fetch & Display Finance Time Series Data
 st.subheader("📊 Finance Apps - Release & Update Trends")
 
 time_series_response = requests.get("http://127.0.0.1:8000/finance_time_series")
@@ -48,7 +48,7 @@ time_series_data = time_series_response.json()
 release_df = pd.DataFrame(time_series_data["release_data"])
 update_df = pd.DataFrame(time_series_data["update_data"])
 
-# 📌 Line Chart for Release & Update Trends
+# Line Chart for Release & Update Trends
 fig = px.line(release_df, x="release_year", y="release_count", title="Number of Finance Apps Released Per Year",
               markers=True)
 st.plotly_chart(fig)
@@ -57,7 +57,7 @@ fig = px.line(update_df, x="update_year", y="update_count", title="Number of Fin
               markers=True)
 st.plotly_chart(fig)
 
-# 📌 Fetch & Display Average Ratings by Category
+# Fetch & Display Average Ratings by Category
 st.subheader("⭐ Average Ratings by Category")
 
 ratings_response = requests.get("http://127.0.0.1:8000/average_ratings")
@@ -66,7 +66,7 @@ ratings_data = ratings_response.json()
 # Convert to DataFrame
 ratings_df = pd.DataFrame(ratings_data["ratings"])
 
-# 📌 Bar Chart for Average Ratings
+# Bar Chart for Average Ratings
 fig = px.bar(ratings_df, x="category", y="avg_rating", title="Average Ratings per Category", color="avg_rating",
              height=500)
 st.plotly_chart(fig)
